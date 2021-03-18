@@ -1,8 +1,65 @@
+import java.util.Scanner;
 
-public class hello {
+public class MenuManager {
 	
 	public static void main(String[] args) {
-		System.out.println("Hello");
+		
+		int num = 0;
+		Scanner input = new Scanner(System.in);
+		
+		while(num != 5){
+			System.out.println("1. Add schedule"); // add schedule
+			System.out.println("2. Complete schedule"); // 완료한 일정 
+			System.out.println("3. Edit/Delete schedule"); // 수정할 일정 선택
+			System.out.println("4. View schedule"); // 모든 일정 보여주기
+			System.out.println("5. Exit"); // 종료
+			
+			System.out.print("Select a number to use :");
+			
+			num = input.nextInt();
+			
+			switch(num) {
+			case 1:
+				
+				int start_time = 0;
+				Scanner start_time_input = new Scanner(System.in);
+				System.out.print("Enter a Start time(Hour) : "); // 일정 시작 시간 설정
+				start_time = start_time_input.nextInt();
+				
+				int time_required = 0;
+				Scanner require_time_input = new Scanner(System.in);
+				System.out.print("Enter a required time(Minutes) : "); // 소요시간 설정
+				time_required = require_time_input.nextInt();
+				
+				Scanner schedule_name_input = new Scanner(System.in);
+				System.out.print("Enter a schedule name: "); // 일정 이름 설정
+				String schedule_name = schedule_name_input.nextLine();
+				
+				break;
+				
+			case 2:
+				
+				System.out.print("Enter a schedule name which is completed : "); // 완료한 일정 처리
+				Scanner complete_schedule_input = new Scanner(System.in);
+				String complete_schedule = complete_schedule_input.nextLine(); 
+				
+				break;
+				
+			case 3:
+				
+				System.out.print("Enter a schedule name which you wanna change : "); // 변경할 일정 이름으로 찾기
+				Scanner edit_schedule_name_input = new Scanner(System.in);
+				String edit_schedule_name = edit_schedule_name_input.nextLine();
+				
+				break;
+				
+			case 4:
+				// 아직 일정을 추가하고 저장하는 코드는 없으므로 우선 비워둘 것 
+				for (int i = 0; i < 168; i++) {
+					System.out.println(); // 1번에서 추가한 일정 보여주기(추가된 순서대로)
+				}
+			}
+		}
 	}
 
 }
