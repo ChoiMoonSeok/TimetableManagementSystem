@@ -1,4 +1,3 @@
-
 public class Schedule {
 	int StartTime;
 	int TimeRequired;
