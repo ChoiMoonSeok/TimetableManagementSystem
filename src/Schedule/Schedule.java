@@ -1,28 +1,19 @@
-import Schedule.Schedule;
-import Schedule.ScheduleWeekday;
+package Schedule;
 
-public class CompleteSchedule extends Schedule{
+public class Schedule {
 	
 	protected ScheduleWeekday Weekday;
-	protected String CompleteScheduleName;
 	protected int StartTimeH;
 	protected int TimeRequired;
+	protected String ScheduleName; 
 	protected int StartTimeM;
-	
+
 	public ScheduleWeekday getWeekday() {
 		return Weekday;
 	}
 
 	public void setWeekday(ScheduleWeekday weekday) {
 		Weekday = weekday;
-	}
-
-	public String getCompleteScheduleName() {
-		return CompleteScheduleName;
-	}
-
-	public void setCompleteScheduleName(String completeScheduleName) {
-		CompleteScheduleName = completeScheduleName;
 	}
 
 	public int getStartTimeH() {
@@ -41,6 +32,14 @@ public class CompleteSchedule extends Schedule{
 		TimeRequired = timeRequired;
 	}
 
+	public String getScheduleName() {
+		return ScheduleName;
+	}
+
+	public void setScheduleName(String scheduleName) {
+		ScheduleName = scheduleName;
+	}
+
 	public int getStartTimeM() {
 		return StartTimeM;
 	}
@@ -48,26 +47,23 @@ public class CompleteSchedule extends Schedule{
 	public void setStartTimeM(int startTimeM) {
 		StartTimeM = startTimeM;
 	}
+
 	
-	public CompleteSchedule() {
-		
+	public Schedule() {	
 	}
 	
-	public CompleteSchedule(String CompleteScheduleName, int StartTimeH, int StartTimeM, int TimeRequired) {
-		this.CompleteScheduleName = CompleteScheduleName;
+	public Schedule(int StartTimeH, int StartTimeM, int TimeRequired, String ScheduleName) {
 		this.StartTimeH = StartTimeH;
 		this.StartTimeM = StartTimeM;
 		this.TimeRequired = TimeRequired;
+		this.ScheduleName = ScheduleName;
 	}
 	
 	public void printinfo() {
-		System.out.println(Weekday);
-		System.out.println(CompleteScheduleName);
-		System.out.println(StartTimeH + ":" + StartTimeM);
-		System.out.println(TimeRequired);
-	}
-	public String CompleteName() {
-		return this.CompleteScheduleName;
+		System.out.println("Weekday : " + Weekday);
+		System.out.println("starttime : " + StartTimeH + ":" + StartTimeM);
+		System.out.println("Time required : " + TimeRequired);
+		System.out.println("Schedule Name : " + ScheduleName);
 	}
 
 }
