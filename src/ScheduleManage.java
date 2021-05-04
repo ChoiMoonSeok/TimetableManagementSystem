@@ -6,7 +6,7 @@ import Schedule.ScheduleWeekday;
 public class ScheduleManage {
 	
 	ArrayList<Schedule> Schedules = new ArrayList<Schedule>(); // class 호출
-	ArrayList<CompleteSchedule> CompleteSchedules = new ArrayList<CompleteSchedule>();
+	ArrayList<Schedule> CompleteSchedules = new ArrayList<Schedule>();
 	
 	Scanner input;
 	
@@ -189,109 +189,123 @@ public class ScheduleManage {
 		System.out.print("Enter a schedule name which is completed : "); // 완료한 일정 처리
 		String complete_schedule = input.next(); 
 		
-		int index = 0;
+		int index = -1;
 		
 		for (int i = 0; i < Schedules.size(); i++) {
-			CompleteSchedule completeschedule = new CompleteSchedule();
-			
-			if (Schedules.get(i).getScheduleName() == complete_schedule) {
-				String a = Schedules.get(i).getScheduleName();
-				int b = Schedules.get(i).getStartTimeH();
-				int d = Schedules.get(i).getStartTimeM();
-				int c = Schedules.get(i).getTimeRequired();
-				completeschedule.setCompleteScheduleName(a);
-				completeschedule.setStartTimeH(b);
-				completeschedule.setStartTimeM(d);
-				completeschedule.setTimeRequired(c);
-				completeschedule.setWeekday(Schedules.get(i).getWeekday());
-				completeschedule.printinfo();
-				CompleteSchedules.add(completeschedule);
+			if (Schedules.get(i).getScheduleName() == complete_schedule) { //이유는 모르겠으나 if문에 진입이 되지 않음. 코드가 틀렸다고 보기에는 다른 메소드에선 같은 코드가 이상없이 실행됨.
+				System.out.println(i);
 				index = i;
 				break;
-				}
-			
 			}
+		}
+		System.out.println("enter a cleared date.");
+		String cleared_date = input.nextLine(); // 일정을 완료한 날짜 입력
+		CompleteSchedule a = new CompleteSchedule();
+		a = (CompleteSchedule) Schedules.get(index);
+		a.setCleared_date(cleared_date);
+			
 		
 		if (index >= 0) {
 			
 			Schedules.remove(index);
 			System.out.println("Completed schedule is moved to completed");	
+			CompleteSchedules.get(CompleteSchedules.size());
+//			System.out.println(CompleteSchedules.get(CompleteSchedules.size() - 1).getCompleteScheduleName());
 		}
 		
 		else {
 			System.out.println(complete_schedule + " doesn't exist.");
 		}
 		
-		System.out.println(CompleteSchedules.get(CompleteSchedules.size()).getCompleteScheduleName());
+		
 	}
 		
 		
 	public void CheckCompleted() {
-		System.out.print(1);
 		for (int i = 0; i < CompleteSchedules.size() - 1; i++) {
 			System.out.print(i);
-			System.out.println(CompleteSchedules.get(i).getScheduleName() + " " + CompleteSchedules.get(i).getWeekday() + " " + CompleteSchedules.get(i).getStartTimeH() + ":" + CompleteSchedules.get(i).getStartTimeM() + " " + CompleteSchedules.get(i).getTimeRequired());
+			System.out.printf("%s %s %d %d %d", CompleteSchedules.get(i).getScheduleName(), CompleteSchedules.get(i).getWeekday(), CompleteSchedules.get(i).getStartTimeH(), CompleteSchedules.get(i).getStartTimeM(), CompleteSchedules.get(i).getTimeRequired());
 				}
 		}
 
 	
 	public void EditSchedule() {
 		
-		System.out.print("Enter a schedule name which you wanna change : "); // 변경할 일정 이름으로 찾기
-		String edit_schedule_name = input.next();
-		int index = 0;
-		for (int i = 0; i < Schedules.size(); i++) {
+		System.out.print("Delete or edit?(delete : 1 or edit : 2) :"); // 삭제 기능 추가
+		int ans = input.nextInt(); 
+		if (ans == 2) { // 편집 기능
+			System.out.print("Enter a schedule name which you wanna change : "); // 변경할 일정 이름으로 찾기
+			String edit_schedule_name = input.next();
+			int index = 0;
+			for (int i = 0; i < Schedules.size(); i++) {
 			
-			if (Schedules.get(i).getScheduleName() == edit_schedule_name) {
-				index = i;
-				break;
+				if (Schedules.get(i).getScheduleName() == edit_schedule_name) {
+					index = i;
+					break;
+				}
+			}
+			if (index >= 0) {
+				Schedule schedule = new Schedule();
+				System.out.print("Schedule Name : ");
+				String ScheduleName = input.next();
+				schedule.setScheduleName(ScheduleName); 
+				System.out.print("start time(Hour) : ");
+				int StartTimeH = input.nextInt();
+				schedule.setStartTimeH(StartTimeH);
+				System.out.print("start time(Minute) : ");
+				int StartTimeM = input.nextInt();
+				schedule.setStartTimeM(StartTimeM);
+				System.out.print("required time : ");
+				int TimeRequired = input.nextInt();
+				schedule.setTimeRequired(TimeRequired);
+				System.out.print("Weekday number : ");
+				int weekday = input.nextInt();
+				switch (weekday) {
+					case 1:
+						schedule.setWeekday(ScheduleWeekday.Monday);
+						break;
+			
+					case 2: 
+						schedule.setWeekday(ScheduleWeekday.Tuesday);
+						break;
+					case 3:
+						schedule.setWeekday(ScheduleWeekday.Wednesday);
+						break;
+					case 4:
+						schedule.setWeekday(ScheduleWeekday.Thursday);
+						break;
+					case 5:
+						schedule.setWeekday(ScheduleWeekday.Friday);
+						break;
+					case 6:
+						schedule.setWeekday(ScheduleWeekday.Saturday);
+						break;
+					case 7:
+						schedule.setWeekday(ScheduleWeekday.Sunday);
+						break;
+				}
+				Schedules.set(index, schedule);
+			
+				System.out.println(ScheduleName + " " + Schedules.get(index).getWeekday() + " " + Schedules.get(index).getStartTimeH() + ":" + Schedules.get(index).getStartTimeM() + " " + Schedules.get(index).getTimeRequired());
+			}
+			else {
+		
+				System.out.println("Schedule " + edit_schedule_name + " does not exist.");
+		
 			}
 		}
-		if (index >= 0) {
-			Schedule schedule = new Schedule();
-			System.out.print("Schedule Name : ");
-			String ScheduleName = input.next();
-			schedule.setScheduleName(ScheduleName); 
-			System.out.print("start time(Hour) : ");
-			int StartTimeH = input.nextInt();
-			schedule.setStartTimeH(StartTimeH);
-			System.out.print("start time(Minute) : ");
-			int StartTimeM = input.nextInt();
-			schedule.setStartTimeM(StartTimeM);
-			System.out.print("required time : ");
-			int TimeRequired = input.nextInt();
-			schedule.setTimeRequired(TimeRequired);
-			System.out.print("Weekday number : ");
-			int weekday = input.nextInt();
-			if (weekday == 1) {
-				schedule.setWeekday(ScheduleWeekday.Monday);
-			}
-			else if (weekday == 2) {
-				schedule.setWeekday(ScheduleWeekday.Tuesday);
-			}
-			else if (weekday == 3) {
-				schedule.setWeekday(ScheduleWeekday.Wednesday);
-			}
-			else if (weekday == 4) {
-				schedule.setWeekday(ScheduleWeekday.Thursday);
-			}
-			else if (weekday == 5) {
-				schedule.setWeekday(ScheduleWeekday.Friday);
-			}
-			else if (weekday == 6) {
-				schedule.setWeekday(ScheduleWeekday.Saturday);
-			}
-			else if (weekday == 7) {
-				schedule.setWeekday(ScheduleWeekday.Sunday);
-			}
-			Schedules.set(index, schedule);
+		else if (ans == 1) { // 삭제 기능
+			System.out.print("Enter a schedule name which you wanna delete : "); // 변경할 일정 이름으로 찾기
+			String delete_schedule_name = input.next();
 			
-			System.out.println(edit_schedule_name + " " + Schedules.get(index).getWeekday() + " " + Schedules.get(index).getStartTimeH() + ":" + Schedules.get(index).getStartTimeM() + " " + Schedules.get(index).getTimeRequired());
-		}
-		else {
-		
-			System.out.println("Schedule " + edit_schedule_name + " does not exist.");
-		
+			int delete_index;
+			for (int i = 0; i < Schedules.size(); i++) {
+				if (Schedules.get(i).getScheduleName() == delete_schedule_name) {
+					delete_index = i;
+					Schedules.remove(delete_index);
+					break; 
+				}
+			}
 		}
 
 	}
