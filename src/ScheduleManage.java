@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Schedule.CompleteSchedule;
 import Schedule.Schedule;
+import Schedule.ScheduleInput;
 import Schedule.ScheduleWeekday;
 
 public class ScheduleManage {
 	
-	ArrayList<Schedule> Schedules = new ArrayList<Schedule>(); // class 호출
-	ArrayList<Schedule> CompleteSchedules = new ArrayList<Schedule>();
+	ArrayList<ScheduleInput> Schedules = new ArrayList<ScheduleInput>(); // class 호출, 인터페이스로 변경
+	ArrayList<CompleteSchedule> CompleteSchedules = new ArrayList<CompleteSchedule>();
 	
 	Scanner input;
 	
@@ -16,7 +19,7 @@ public class ScheduleManage {
 	
 	public void AddSchedule() {
 		int number = 0;
-		Schedule Schedule;
+		ScheduleInput Schedule; // ScheduleInput으로 변경
 		while (number < 1 || number > 7) {
 		System.out.println("Select a Weekday between 1 ~ 7");
 		System.out.println("1. Monday");
@@ -192,7 +195,10 @@ public class ScheduleManage {
 		int index = -1;
 		
 		for (int i = 0; i < Schedules.size(); i++) {
-			if (Schedules.get(i).getScheduleName() == complete_schedule) { //이유는 모르겠으나 if문에 진입이 되지 않음. 코드가 틀렸다고 보기에는 다른 메소드에선 같은 코드가 이상없이 실행됨.
+			ScheduleInput a = Schedules.get(i);
+			String a_name = a.getScheduleName();
+			
+			if (a_name == complete_schedule) { //이유는 모르겠으나 if문에 진입이 되지 않음. 코드가 틀렸다고 보기에는 다른 메소드에선 같은 코드가 이상없이 실행됨.
 				System.out.println(i);
 				index = i;
 				break;

@@ -1,6 +1,6 @@
 package Schedule;
 
-public class Schedule {
+public class Schedule implements ScheduleInput{// ScheduleInput¿ª √ﬂ∞°
 	
 	protected ScheduleWeekday Weekday;
 	protected int StartTimeH;
