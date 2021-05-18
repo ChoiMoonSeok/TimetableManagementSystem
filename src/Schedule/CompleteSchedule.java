@@ -1,5 +1,5 @@
 package Schedule;
-public class CompleteSchedule extends Schedule implements ScheduleInput{ // ScheduleInput을 추가
+public class CompleteSchedule extends Schedule{ // ScheduleInput을 추가
 	
 	
 	protected String cleared_date; // 일정을 완료한 날짜 변수 추가
