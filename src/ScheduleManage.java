@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,12 +11,17 @@ import Schedule.Schedule;
 import Schedule.ScheduleInput;
 import Schedule.ScheduleWeekday;
 
-public class ScheduleManage {
+public class ScheduleManage implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	ArrayList<ScheduleInput> Schedules = new ArrayList<ScheduleInput>(); // class 호출, 인터페이스로 변경
 	ArrayList<CompleteSchedule> CompleteSchedules = new ArrayList<CompleteSchedule>();
 	
-	Scanner input;
+	transient Scanner input;
 	
 	ScheduleManage (Scanner input){
 		this.input = input;

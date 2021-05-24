@@ -1,12 +1,18 @@
 package Schedule;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Exception.HourFormatException;
 import Exception.MinuteFormatException;
 
-public class Schedule implements ScheduleInput{// ScheduleInput을 추가
+public class Schedule implements ScheduleInput, Serializable {// ScheduleInput을 추가
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	protected ScheduleWeekday Weekday;
 	protected int StartTimeH;
