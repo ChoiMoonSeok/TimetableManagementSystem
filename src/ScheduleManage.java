@@ -27,7 +27,7 @@ public class ScheduleManage implements Serializable{
 		this.input = input;
 	}
 	
-	public void AddSchedule() throws HourFormatException, MinuteFormatException {
+	public void AddSchedule(Scanner input) throws HourFormatException, MinuteFormatException {
 		int number = 0;
 		ScheduleInput Schedule = new Schedule(); // ScheduleInput으로 변경
 		while (number < 1 || number > 7) {
@@ -130,7 +130,7 @@ public class ScheduleManage implements Serializable{
 	
 	
 	
-	public void CompleteSchedule() throws HourFormatException, MinuteFormatException{
+	public void CompleteSchedule(Scanner input) throws HourFormatException, MinuteFormatException{
 		System.out.print("Enter a schedule name which is completed : "); // 완료한 일정 처리
 		int index = FindSchedule(input);
 		System.out.println(index);
@@ -170,7 +170,7 @@ public class ScheduleManage implements Serializable{
 		}
 
 	
-	public void EditSchedule() throws MinuteFormatException, HourFormatException, OneOrTwoException {
+	public void EditSchedule(Scanner input) throws MinuteFormatException, HourFormatException, OneOrTwoException {
 		int ans = 0;
 		do {
 			try {

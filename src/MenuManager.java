@@ -37,12 +37,12 @@ public class MenuManager {
 
 				switch(num) {
 					case 1:
-						ScheduleManage.AddSchedule();
+						ScheduleManage.AddSchedule(input);
 						logger.log("add schedule");
 						break;
 
 					case 2:
-						ScheduleManage.CompleteSchedule();
+						ScheduleManage.CompleteSchedule(input);
 						logger.log("complete schedule");
 						break;
 				
@@ -52,7 +52,7 @@ public class MenuManager {
 						break;
 
 					case 4:
-						ScheduleManage.EditSchedule();
+						ScheduleManage.EditSchedule(input);
 						logger.log("edit or delete schedule");
 						break;
 
@@ -127,6 +127,3 @@ public class MenuManager {
 		return ScheduleManage;
 	}
 }
-
-
-

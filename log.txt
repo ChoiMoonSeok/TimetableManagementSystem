@@ -1,0 +1,16 @@
+5월 25, 2021 2:39:03 오후 log.EventLogger log
+INFO: view schedule
+5월 25, 2021 2:39:10 오후 log.EventLogger log
+INFO: edit or delete schedule
+5월 25, 2021 2:39:16 오후 log.EventLogger log
+INFO: view schedule
+5월 25, 2021 2:39:33 오후 log.EventLogger log
+INFO: edit or delete schedule
+5월 25, 2021 2:39:40 오후 log.EventLogger log
+INFO: view schedule
+5월 25, 2021 2:39:56 오후 log.EventLogger log
+INFO: add schedule
+5월 25, 2021 2:40:06 오후 log.EventLogger log
+INFO: edit or delete schedule
+5월 25, 2021 2:40:07 오후 log.EventLogger log
+INFO: view schedule
