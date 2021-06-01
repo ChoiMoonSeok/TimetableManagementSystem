@@ -33,6 +33,7 @@ public class MenuSelection extends JFrame {
 		
 		this.add(panel1, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.CENTER);
+		this.setTitle("MenuSelection");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}

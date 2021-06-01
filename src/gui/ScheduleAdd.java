@@ -53,6 +53,7 @@ public class ScheduleAdd extends JFrame  {
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		
 		this.setSize(300, 300);
+		this.setTitle("Schedule add");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setContentPane(panel);
 		this.setVisible(true);
