@@ -7,11 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class CompleteScheduleGUI extends JFrame{
+public class CompleteScheduleGUI extends JPanel{
+	WindowFrame frame;
 
-	public CompleteScheduleGUI() {
-		this.setSize(300, 300);
-		
+	public CompleteScheduleGUI(WindowFrame frame) {
+		this.frame = frame;
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -33,10 +34,7 @@ public class CompleteScheduleGUI extends JFrame{
 		
 		SpringUtilities.makeCompactGrid(panel, 3, 2, 3, 3, 3, 3);
 
+		this.add(panel);
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("CompleteSchedule");
-		this.setContentPane(panel);
-		this.setVisible(true);
 	}
 }

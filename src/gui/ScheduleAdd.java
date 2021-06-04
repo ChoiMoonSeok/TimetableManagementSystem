@@ -6,10 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import Manager.ScheduleManage;
 
-public class ScheduleAdd extends JFrame  {
-
-	public ScheduleAdd() {
+public class ScheduleAdd extends JPanel  {
+	WindowFrame frame;
+	private ScheduleManage ScheduleManage;
+	
+	public ScheduleAdd(WindowFrame frame) {
+		this.frame = frame;
+		this.ScheduleManage = ScheduleManage;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -52,12 +58,8 @@ public class ScheduleAdd extends JFrame  {
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setTitle("Schedule add");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
-		this.setVisible(true);
-		
+
+		this.add(panel);
 		
 	}
 

@@ -1,3 +1,4 @@
+package Manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 import Exception.HourFormatException;
 import Exception.MinuteFormatException;
 import Exception.OneOrTwoException;
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -22,6 +24,7 @@ public class MenuManager {
 		if (ScheduleManage == null) {
 			ScheduleManage = new ScheduleManage(input);
 		}
+		WindowFrame frame = new WindowFrame(ScheduleManage);
 		SelectMenu(input, ScheduleManage);
 		putObject(ScheduleManage, "ScheduleManage.ser");
 	}

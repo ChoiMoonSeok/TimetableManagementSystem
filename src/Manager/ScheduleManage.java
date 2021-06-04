@@ -1,3 +1,4 @@
+package Manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -161,6 +162,13 @@ public class ScheduleManage implements Serializable{
 		
 	}
 		
+	public int size() {
+		return Schedules.size();
+	}
+	
+	public ScheduleInput get(int index) {
+		return Schedules.get(index);
+	}
 		
 	public void CheckCompleted() {
 		for (int i = 0; i < CompleteSchedules.size() - 1; i++) {
