@@ -6,13 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+
+import Listener.ButtonAddCancelListener;
+import Listener.ScheduleAddListener;
 import Manager.ScheduleManage;
 
 public class ScheduleAdd extends JPanel  {
 	WindowFrame frame;
 	private ScheduleManage ScheduleManage;
 	
-	public ScheduleAdd(WindowFrame frame) {
+	public ScheduleAdd(WindowFrame frame, ScheduleManage ScheduleManage) {
 		this.frame = frame;
 		this.ScheduleManage = ScheduleManage;
 		
@@ -50,10 +53,15 @@ public class ScheduleAdd extends JPanel  {
 		panel.add(labelWeekday);
 		panel.add(fieldWeekday);
 		
-		panel.add(new JButton("Save"));
-		panel.add(new JButton("cancel"));
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new ScheduleAddListener(fieldStartTimeHour, fieldStartTimeMinute, fieldRequiredTime, fieldWeekday, fieldScheduleName, ScheduleManage));
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new ButtonAddCancelListener(frame));
+	
 		
-		
+		panel.add(saveButton);
+		panel.add(cancelButton);
+			
 		
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);

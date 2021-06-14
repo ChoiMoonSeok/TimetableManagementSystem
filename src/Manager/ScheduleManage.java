@@ -28,6 +28,16 @@ public class ScheduleManage implements Serializable{
 		this.input = input;
 	}
 	
+	public void AddSchedule(String StartTimeH, String StartTimeM, String RequiredTime, String ScheduleName, String Weekday) {
+		ScheduleInput scheudule = new Schedule();
+//		scheudule.get(input);
+		Schedules.add(scheudule);
+	}
+	
+	public void AddSchedule(ScheduleInput Schedule) {
+		Schedules.add(Schedule);
+	}
+	
 	public void AddSchedule(Scanner input) throws HourFormatException, MinuteFormatException {
 		int number = 0;
 		ScheduleInput Schedule = new Schedule(); // ScheduleInput으로 변경
@@ -132,11 +142,10 @@ public class ScheduleManage implements Serializable{
 	
 	
 	public void CompleteSchedule(Scanner input) throws HourFormatException, MinuteFormatException{
+//		
 		System.out.print("Enter a schedule name which is completed : "); // 완료한 일정 처리
+		
 		int index = FindSchedule(input);
-		System.out.println(index);
-		System.out.println("enter a cleared date.");
-		String cleared_date = input.nextLine(); // 일정을 완료한 날짜 입력
 			
 		
 		if (index >= 0) {
@@ -146,10 +155,13 @@ public class ScheduleManage implements Serializable{
 			a.setStartTimeM(Schedules.get(index).getStartTimeM());
 			a.setScheduleName(Schedules.get(index).getScheduleName());
 			a.setTimeRequired(Schedules.get(index).getTimeRequired());
-			a.setCleared_date(cleared_date);
+			a.setWeekday(Schedules.get(index).getWeekday());
+//			System.out.print("enter a cleared date : ");
+//			a.setCleared_date(input.nextLine()); // 일정을 완료한 날짜 입력
 			a.printinfo();
 			Schedules.remove(index);
 			System.out.println("Completed schedule is moved to completed");	
+			CompleteSchedules.add(a);
 			CompleteSchedules.get(CompleteSchedules.size());
 			
 //			System.out.println(CompleteSchedules.get(CompleteSchedules.size() - 1).getCompleteScheduleName());
@@ -258,12 +270,12 @@ public class ScheduleManage implements Serializable{
 		int index = -90;
 		for (int i = 0; i < Schedules.size(); i++) {
 			index = 1;
-			if (Schedules.get(i).getScheduleName() == name) {	
+			if (name.equals(Schedules.get(i).getScheduleName())) {	
 				index = i;
 				break;
 			}
 		}
-		return index - 1;
+		return index;
 	}
 	public int OneOrTwo(Scanner input) throws OneOrTwoException {
 		int ans;

@@ -23,7 +23,7 @@ public class WindowFrame extends JFrame{
 		
 		this.ScheduleMange = ScheduleManage;
 		this.MenuSelection = new MenuSelection(this);
-		this.ScheduleAdd = new ScheduleAdd(this);
+		this.ScheduleAdd = new ScheduleAdd(this, this.ScheduleMange);
 		this.ScheduleViewer = new ScheduleViewer(this, this.ScheduleMange);
 		this.CompleteScheduleGUI = new CompleteScheduleGUI(this);
 		this.CheckCompleteGUI = new CheckCompleteGUI(this);
